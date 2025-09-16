@@ -4,7 +4,6 @@ namespace MauiToDoApp;
 
 public partial class MainPage : ContentPage
 {
-    // ✅ Sửa: Từ string → TodoItem
     public ObservableCollection<TodoItem> TodoItems { get; set; } = new();
 
     public MainPage()
@@ -18,7 +17,7 @@ public partial class MainPage : ContentPage
         var text = TodoEntry.Text?.Trim();
         if (!string.IsNullOrEmpty(text))
         {
-            TodoItems.Add(new TodoItem(text)); // ✅ Truyền đúng kiểu
+            TodoItems.Add(new TodoItem(text)); 
             TodoEntry.Text = string.Empty;
         }
     }
@@ -26,7 +25,7 @@ public partial class MainPage : ContentPage
     private void OnDeleteClicked(object sender, EventArgs e)
     {
         var swipeItem = sender as SwipeItem;
-        var item = swipeItem?.BindingContext as TodoItem; // ✅ Đúng kiểu
+        var item = swipeItem?.BindingContext as TodoItem; 
         if (item != null)
         {
             TodoItems.Remove(item);
