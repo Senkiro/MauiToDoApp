@@ -1,0 +1,48 @@
+﻿<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MauiToDoApp.MainPage">
+
+    <VerticalStackLayout Padding="20" Spacing="15">
+        <Entry x:Name="TodoEntry" Placeholder="Nhập công việc..." FontSize="18" />
+        <Button Text="Thêm" Clicked="OnAddClicked" BackgroundColor="LightBlue" TextColor="Black" />
+
+        <CollectionView x:Name="TodoListView">
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <SwipeView>
+                        <SwipeView.RightItems>
+                            <SwipeItems>
+                                <SwipeItem Text="Xoá" BackgroundColor="Red" Invoked="OnDeleteClicked" />
+                            </SwipeItems>
+                        </SwipeView.RightItems>
+
+                        <Grid Padding="0" ColumnDefinitions="Auto, *" VerticalOptions="Center">
+                            <!-- Checkbox để đánh dấu hoàn thành -->
+                            <CheckBox IsChecked="{Binding IsCompleted}" />
+
+                            <!-- Label có gạch ngang nếu đã hoàn thành -->
+                            <Label Grid.Column="1"
+                                   Text="{Binding Title}"
+                                   FontSize="18"
+                                   VerticalOptions="Center"
+                                   Margin="10,0,0,0">
+                                <Label.Style>
+                                    <Style TargetType="Label">
+                                        <Style.Triggers>
+                                            <DataTrigger TargetType="Label"
+                                                         Binding="{Binding IsCompleted}"
+                                                         Value="True">
+                                                <Setter Property="TextDecorations" Value="Strikethrough" />
+                                                <Setter Property="TextColor" Value="Gray" />
+                                            </DataTrigger>
+                                        </Style.Triggers>
+                                    </Style>
+                                </Label.Style>
+                            </Label>
+                        </Grid>
+                    </SwipeView>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+    </VerticalStackLayout>
+</ContentPage>
