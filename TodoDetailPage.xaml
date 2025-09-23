@@ -1,0 +1,16 @@
+﻿<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MauiToDoApp.TodoDetailPage"
+             Title="Chi tiết công việc">
+
+    <VerticalStackLayout Padding="20" Spacing="15">
+        <Label Text="Nội dung công việc:" FontSize="16" />
+        <Label x:Name="TitleLabel" FontSize="20" FontAttributes="Bold" />
+
+        <Label Text="Trạng thái:" FontSize="16" />
+        <Label x:Name="StatusLabel" FontSize="16" />
+
+        <Label Text="Tạo lúc:" FontSize="16" />
+        <Label x:Name="CreatedAtLabel" FontSize="16" />
+    </VerticalStackLayout>
+</ContentPage>
