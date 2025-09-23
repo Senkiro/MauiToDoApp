@@ -6,6 +6,27 @@
         <Entry x:Name="TodoEntry" Placeholder="Nhập công việc..." FontSize="18" />
         <Button Text="Thêm" Clicked="OnAddClicked" BackgroundColor="LightBlue" TextColor="Black" />
 
+        <Entry Placeholder="Tìm kiếm công việc..."
+            x:Name="SearchEntry"
+            TextChanged="OnSearchTextChanged"
+            FontSize="16"
+            Margin="0,10"/>
+
+
+        <Picker x:Name="SortPicker" Title="Sắp xếp theo" SelectedIndexChanged="OnSortChanged">
+            <Picker.Items>
+                <x:String>Mặc định</x:String>
+                <x:String>Thời gian tạo mới nhất</x:String>
+                <x:String>Chưa hoàn thành trước</x:String>
+            </Picker.Items>
+        </Picker>
+
+        <Label x:Name="RemainingLabel"
+                FontSize="14"
+                TextColor="DarkBlue"
+                Margin="0,0,0,10"
+                Text="Còn lại: 0 công việc" />
+
         <CollectionView x:Name="TodoListView">
             <CollectionView.ItemTemplate>
                 <DataTemplate>
@@ -18,27 +39,34 @@
 
                         <Grid Padding="0" ColumnDefinitions="Auto, *" VerticalOptions="Center">
                             <!-- Checkbox để đánh dấu hoàn thành -->
-                            <CheckBox IsChecked="{Binding IsCompleted}" />
+                            <CheckBox Grid.Column="0"
+                                        IsChecked="{Binding IsCompleted}"
+                                        VerticalOptions="Start"
+                                        Margin="0,2,10,0" />
 
-                            <!-- Label có gạch ngang nếu đã hoàn thành -->
-                            <Label Grid.Column="1"
-                                   Text="{Binding Title}"
-                                   FontSize="18"
-                                   VerticalOptions="Center"
-                                   Margin="10,0,0,0">
-                                <Label.Style>
-                                    <Style TargetType="Label">
-                                        <Style.Triggers>
-                                            <DataTrigger TargetType="Label"
-                                                         Binding="{Binding IsCompleted}"
-                                                         Value="True">
-                                                <Setter Property="TextDecorations" Value="Strikethrough" />
-                                                <Setter Property="TextColor" Value="Gray" />
-                                            </DataTrigger>
-                                        </Style.Triggers>
-                                    </Style>
-                                </Label.Style>
-                            </Label>
+                            <!-- Cột 1 chứa cả Tiêu đề và thời gian -->
+                            <VerticalStackLayout Grid.Column="1" Spacing="2">
+                                <!-- Label tiêu đề -->
+                                <Label Text="{Binding Title}"
+                                       FontSize="18"
+                                       TextColor="Black">
+                                    <Label.Style>
+                                        <Style TargetType="Label">
+                                            <Style.Triggers>
+                                                <DataTrigger TargetType="Label" Binding="{Binding IsCompleted}" Value="True">
+                                                    <Setter Property="TextDecorations" Value="Strikethrough" />
+                                                    <Setter Property="TextColor" Value="Gray" />
+                                                </DataTrigger>
+                                            </Style.Triggers>
+                                        </Style>
+                                    </Label.Style>
+                                </Label>
+
+                                <!-- Label thời gian -->
+                                <Label Text="{Binding CreatedAt, StringFormat='Tạo lúc: {0:dd/MM/yyyy HH:mm}'}"
+                                        FontSize="12"
+                                        TextColor="Gray" />
+                            </VerticalStackLayout>
                         </Grid>
                     </SwipeView>
                 </DataTemplate>
