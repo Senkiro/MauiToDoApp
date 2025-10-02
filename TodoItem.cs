@@ -21,6 +21,9 @@ public class TodoItem : INotifyPropertyChanged
 
 =======
     public string Title { get; set; }
+<<<<<<< HEAD
+>>>>>>> ecfcb6d406a6bc260cc3e57a899bb2427741552f
+=======
 >>>>>>> ecfcb6d406a6bc260cc3e57a899bb2427741552f
     public DateTime CreatedAt { get; set; }
 
@@ -34,7 +37,12 @@ public class TodoItem : INotifyPropertyChanged
             {
                 _isCompleted = value;
 <<<<<<< HEAD
+<<<<<<< HEAD
                 OnPropertyChanged(nameof(IsCompleted));
+=======
+
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(IsCompleted)));
+>>>>>>> ecfcb6d406a6bc260cc3e57a899bb2427741552f
 =======
 
                 PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(IsCompleted)));
@@ -55,9 +63,12 @@ public class TodoItem : INotifyPropertyChanged
 
     public event PropertyChangedEventHandler PropertyChanged;
 <<<<<<< HEAD
+<<<<<<< HEAD
 
     protected void OnPropertyChanged(string propertyName) =>
         PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+=======
+>>>>>>> ecfcb6d406a6bc260cc3e57a899bb2427741552f
 =======
 >>>>>>> ecfcb6d406a6bc260cc3e57a899bb2427741552f
 }

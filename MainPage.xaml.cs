@@ -54,7 +54,68 @@ public partial class MainPage : ContentPage
             TodoItems.Remove(item);
             UpdateRemainingCount();
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+        }
+    }
+
+    private void UpdateRemainingCount()
+    {
+        int remaining = TodoItems.Count(item => !item.IsCompleted);
+        RemainingLabel.Text = $"Còn lại: {remaining} công việc";
+    }
+
+    private void OnSortChanged (object senderb, EventArgs e)
+    {
+        var selected = SortPicker.SelectedIndex;
+
+        IEnumerable<TodoItem> sorted = originalItems;
+
+        switch (selected)
+        {
+            case 1:
+                sorted = originalItems.OrderByDescending(item => item.CreatedAt);
+                break;
+
+            case 2:
+                sorted = originalItems
+                    .OrderBy(item => item.IsCompleted)
+                    .ThenBy(item => item.CreatedAt);
+                break;
+        }
+
+        TodoItems.Clear();
+        foreach (var item in sorted)
+        {
+            TodoItems.Add(item);
+        }
+    }
+
+    private void OnSearchTextChanged(object sender, TextChangedEventArgs e)
+    {
+        string keyword = e.NewTextValue?.ToLower().Trim();
+
+        if (string.IsNullOrWhiteSpace(keyword))
+        {
+            TodoItems.Clear();
+            foreach(var item in originalItems)
+            {
+                TodoItems.Add(item);
+            }
+        }
+        else
+        {
+            var filtered = originalItems
+                            .Where(x => x.Title.ToLower().Contains(keyword))
+                            .ToList();
+
+            TodoItems.Clear();
+            foreach (var item in filtered)
+            {
+                TodoItems.Add(item);
+            }
+>>>>>>> ecfcb6d406a6bc260cc3e57a899bb2427741552f
         }
     }
 

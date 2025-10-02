@@ -28,9 +28,12 @@
                 Text="Còn lại: 0 công việc" />
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 
         <CollectionView x:Name="TodoListView" SelectionMode="Single" SelectionChanged="OnItemSelected">
 =======
+=======
+>>>>>>> ecfcb6d406a6bc260cc3e57a899bb2427741552f
         <CollectionView x:Name="TodoListView">
 >>>>>>> ecfcb6d406a6bc260cc3e57a899bb2427741552f
             <CollectionView.ItemTemplate>
