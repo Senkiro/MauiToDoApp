@@ -252,9 +252,7 @@ public partial class MainPage : ContentPage
                 }
 
                 item.Title = newTitle.Trim();
-
-
-
+                //datnq
             }
         }
     }
