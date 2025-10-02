@@ -61,14 +61,3 @@ public class TodoItem : INotifyPropertyChanged
         IsCompleted = false;
     }
 
-    public event PropertyChangedEventHandler PropertyChanged;
-<<<<<<< HEAD
-<<<<<<< HEAD
-
-    protected void OnPropertyChanged(string propertyName) =>
-        PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-=======
->>>>>>> ecfcb6d406a6bc260cc3e57a899bb2427741552f
-=======
->>>>>>> ecfcb6d406a6bc260cc3e57a899bb2427741552f
-}
